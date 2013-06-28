@@ -6,7 +6,13 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'loop.views.home', name='home'),
+    url(r'^getEventsNearMe/$', 'splash.views.getEventsNearMe'),
+    url(r'^getInterestCategories/$', 'splash.views.getInterestCategories'),
+    url(r'^getInterestCategoryInterests/$', 'splash.views.getInterestCategoryInterests'),
+    url(r'^getEventMessages/$', 'splash.views.getEventMessages'),
+    url(r'^getEventUsers/$', 'splash.views.getEventUsers'),
+    url(r'^getMyInterests/$', 'splash.views.getMyInterests'),
+    url(r'^getMyEvents/$', 'splash.views.getMyEvents'),
     # url(r'^loop/', include('loop.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

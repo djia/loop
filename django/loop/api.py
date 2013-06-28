@@ -51,7 +51,7 @@ def getMyInterests(userid):
 	#subscribed to
 	return_list = []
 	user = User.objects.with_id(userid)
-	for interest in Interest.objects(users__in=[user]:
+	for interest in Interest.objects(users=user):
 		return_list.append(interest)
 
 	return return_list
