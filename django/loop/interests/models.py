@@ -14,7 +14,8 @@ class Interest(Document):
 	#object_tid = IntField(primary_key=True)
 	name = StringField(max_length=200, required=True)
 	interestcategory = ReferenceField(InterestCategory, reverse_delete_rule=CASCADE)
-	users = ListField(ReferenceField(User))
+	users = ListField(ReferenceField(User, dbref=True))
+	events = ListField(ReferenceField(Event, dbref=True))
 	date_time_stamp = DateTimeField()
 
 
