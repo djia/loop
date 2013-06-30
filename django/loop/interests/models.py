@@ -1,21 +1,30 @@
 from mongoengine import *
-from django.db import models
-from django.core.urlresolvers import reverse
 from djangotoolbox.fields import ListField, EmbeddedModelField
-from accounts.models import User
 from events.models import Event
+from accounts.models import User
 
 class InterestCategory(Document):
-	#object_id = IntField(primary_key=True)
 	name = StringField(max_length=50, required=True)
-	date_time_stamp = DateTimeField()
+	time_created = DateTimeField()
+	time_updated = DateTimeField()
+
 
 class Interest(Document):
-	#object_tid = IntField(primary_key=True)
 	name = StringField(max_length=200, required=True)
 	interestcategory = ReferenceField(InterestCategory, reverse_delete_rule=CASCADE)
-	users = ListField(ReferenceField(User, dbref=True))
-	events = ListField(ReferenceField(Event, dbref=True))
-	date_time_stamp = DateTimeField()
+	time_created = DateTimeField()
+	time_updated = DateTimeField()
 
 
+class InterestEvent(Document):
+	interest = ReferenceField(Interest)
+	event = ReferenceField(Event)
+	time_created = DateTimeField()
+	time_updated = DateTimeField()
+
+
+class InterestUser(Document):
+	interest = ReferenceField(Interest)
+	user = ReferenceField(User)
+	time_created = DateTimeField()
+	time_updated = DateTimeField()
