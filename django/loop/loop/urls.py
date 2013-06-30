@@ -6,16 +6,18 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^api/getInterestCategories/$', 'interests.api.get_interestcategories'),
-    url(r'^api/getInterestCategoryInterests/$', 'interests.api.get_interestcategory_interests'),    
-    url(r'^api/getMyInterests/$', 'interests.api.get_myinterests'),
+    url(r'^api/getinterestcategories/$', 'interests.api.get_interestcategories'),
+    url(r'^api/getinterestcategoryinterests/$', 'interests.api.get_interestcategory_interests_nearme'),    
+    url(r'^api/getmyinterests/$', 'interests.api.get_myinterests'),
+    url(r'^api/geteventinterests/$', 'interests.api.get_eventinterests'),
 
-    url(r'^api/getEventsNearMe/$', 'events.api.get_events_nearme'),
-    url(r'^api/getEventMessages/$', 'events.api.get_eventmessages'),
-    url(r'^api/getMyEvents/$', 'events.api.get_myevents'),
+    url(r'^api/geteventsnearme/$', 'events.api.get_events_nearme'),
+    url(r'^api/geteventmessages/$', 'events.api.get_eventmessages'),
+    url(r'^api/getmyevents/$', 'events.api.get_myevents'),
+    url(r'^api/getinteresteventsnearme/$', 'events.api.get_interestevents_nearme'),
 
-    url(r'^api/getEventUsers/$', 'accounts.api.get_eventusers'),
-    url(r'^api/getInterestUsers/$', 'accounts.api.get_interestusers'),
+    url(r'^api/geteventusers/$', 'accounts.api.get_eventusers'),
+    url(r'^api/getinterestusers/$', 'accounts.api.get_interestusers'),
     # url(r'^loop/', include('loop.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

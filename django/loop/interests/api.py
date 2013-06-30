@@ -11,16 +11,18 @@ connect('suloop')
 def get_interestcategories(request):
 	#function to get all interest categories
 	#later this will also be geolocalized
-	gpsx = request.GET.get('gpsx')
-	gpsy = request.GET.get('gpsy')	
+	#gpsx = request.GET.get('gpsx')
+	#gpsy = request.GET.get('gpsy')
 	json = InterestCategory.objects.to_json()
 	return HttpResponse(json, content_type="application/json")
 
 
-def get_interestcategory_interests(request):
+def get_interestcategory_interests_nearme(request):
 	#function to get all interests of a
 	#given interestcategory
 	#later this will also be geo
+	gpsx = request.GET.get('gpsx')
+	gpsy = request.GET.get('gpsy')
 	interestcategoryid = request.GET.get('interestcategoryid')
 	interestlist = Interest.objects.filter(interestcategory=interestcategoryid)
 	return HttpResponse(interestlist.to_json(), content_type="application/json")
@@ -31,4 +33,9 @@ def get_myinterests(request):
 	#subscribed to
 	userid = request.GET.get('userid')
 	interestlist = InterestUser.objects.filter(user=userid)
-	return HttpResponse(interestlist.to_json(), content_type="application/json")	
+	return HttpResponse(interestlist.to_json(), content_type="application/json")
+
+def get_eventinterests(request):
+	eventid = request.GET.get('eventid')
+	interestlist = InterestEvent.objects.filter(event=eventid)
+	return HttpResponse(interestlist.to_json(), content_type="application/json")
